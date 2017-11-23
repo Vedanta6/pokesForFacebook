@@ -5,14 +5,10 @@ To launch the program you need to have/install:
     - chromedriver (https://sites.google.com/a/chromium.org/chromedriver/)
     - Google Chrome
 
-Preparations:
-1. Enter your own login and password of your facebook account in config.py:
+Enter your own login, password of your facebook account and the path to chromedriver.exe in config.py:
 
           SITE_USERNAME = '[enter your email]'
           SITE_PASSWORD = '[enter your password]'
-          
-2. Replace the path to chromedriver.exe in line 15 connect_selenium.py:
-
-          browser = webdriver.Chrome('[enter your path]\chromedriver.exe', chrome_options=options)
+          CHROME_DRIVER = ('C:\\[enter the path to chromedriver]\\chromedriver.exe')
     
-Enjoy the process ;)
+Run the program and enjoy the process ;)
