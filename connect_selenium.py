@@ -21,7 +21,7 @@ options = Options()
 options.add_argument("--disable-notifications")
 browser = webdriver.Chrome(config.CHROME_DRIVER, chrome_options=options)
 
-browser.get('http://facebook.com')
+browser.get('https://www.facebook.com')
 time.sleep(2)
 
 # user credentials
@@ -34,11 +34,15 @@ password.send_keys(config.SITE_PASSWORD)
 login = browser.find_element_by_id("loginbutton").click()
 
 # pokes page
-browser.get('http://facebook.com/pokes')
+browser.get('https://www.facebook.com/pokes')
 
 while 1:
-    try:
-        browser.find_element_by_link_text("Poke back").click()
+        try:
+        if browser.current_url == 'https://www.facebook.com/pokes':
+            if not browser.find_element_by_link_text("Poke back").is_selected():
+                browser.find_element_by_link_text("Poke back").click()
+        else:
+            browser.get('https://www.facebook.com/pokes')
     except element_exceptions:
         pass
     except (KeyboardInterrupt, SystemExit, WebDriverException):
