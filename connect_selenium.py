@@ -33,11 +33,7 @@ browser.get('http://facebook.com/pokes')
 while 1:
     try:
         browser.find_element_by_link_text("Poke back").click()
-        # time.sleep(1)
-    except (KeyboardInterrupt, SystemExit):
-        browser.close()
-        break
     except NoSuchElementException:
         pass
-    except WebDriverException:
+    except (KeyboardInterrupt, SystemExit, WebDriverException):
         break
