@@ -6,9 +6,15 @@
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from selenium.common.exceptions import WebDriverException, ElementNotSelectableException, ElementNotVisibleException, \
+    InvalidElementStateException, ElementNotInteractableException, NoSuchElementException, \
+    StaleElementReferenceException, TimeoutException
 import time
 import config
+
+element_exceptions = (WebDriverException, ElementNotSelectableException, ElementNotVisibleException,
+                      InvalidElementStateException, ElementNotInteractableException, NoSuchElementException,
+                      StaleElementReferenceException, TimeoutException)
 
 # browser init
 options = Options()
@@ -33,7 +39,7 @@ browser.get('http://facebook.com/pokes')
 while 1:
     try:
         browser.find_element_by_link_text("Poke back").click()
-    except NoSuchElementException:
+    except element_exceptions:
         pass
     except (KeyboardInterrupt, SystemExit, WebDriverException):
         break
